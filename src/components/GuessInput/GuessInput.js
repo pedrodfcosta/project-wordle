@@ -1,26 +1,28 @@
 import React from "react";
 
-function GuessInput() {
-  const [guess, setGuess] = React.useState("");
+function GuessInput({ guess, setGuess, guessList, setGuessList }) {
+  const [nextGuess, setNextGuess] = React.useState("");
 
   return (
     <form
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
-        console.log({ guess });
-        setGuess("");
+        guess = nextGuess;
+        setGuess(guess);
+        setGuessList([...guessList, guess]);
+        setNextGuess("");
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         id="guess-input"
         type="text"
-        required={true}
-        value={guess}
+        required
+        value={nextGuess}
         pattern=".{5}"
         onChange={(event) => {
-          setGuess(event.target.value.toUpperCase());
+          setNextGuess(event.target.value.toUpperCase());
         }}
       />
     </form>
@@ -28,4 +30,3 @@ function GuessInput() {
 }
 
 export default GuessInput;
-
