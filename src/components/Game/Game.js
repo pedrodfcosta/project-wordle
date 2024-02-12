@@ -6,6 +6,7 @@ import GuessInput from "../GuessInput/GuessInput";
 import GuessList from "../GuessList/GuessList";
 import EndBanner from "../EndBanner/EndBanner";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import Keyboard from "../Keyboard/Keyboard";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -30,6 +31,7 @@ function Game() {
       <GuessList guessList={guessList} answer={answer} />
       <GuessInput handleSubmitGuess={handleSubmitGuess} gameEnded={gameEnded} />
       <EndBanner guessList={guessList} answer={answer} />
+      <Keyboard guessList={guessList} answer={answer} />
     </>
   );
 }
